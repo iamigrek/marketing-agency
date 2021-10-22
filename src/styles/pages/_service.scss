@@ -1,0 +1,38 @@
+.service {
+  &__container {
+    padding: 75px 15px;
+  }
+  &__list {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__img {
+    margin-bottom: 25px;
+    height: 80px;
+  }
+
+  &__img-wrapper {
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      top: -25px;
+      left: 30px;
+      width: 100px;
+      height: 100px;
+      background-color: $squeeze;
+      border-radius: 50%;
+      z-index: -1;
+    }
+  }
+
+  &__title {
+    margin-bottom: 10px;
+    font: $fs-service-title;
+  }
+}

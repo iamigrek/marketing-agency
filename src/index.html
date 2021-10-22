@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="./css/global.css">
+	<link rel="stylesheet" href="./css/vendor.css">
+	<link rel="stylesheet" href="./css/main.css">
+</head>
+
+<body>
+	<div class="site-container">
+		@include('.\content\pages\header.html')
+		<main class="main">
+			@include('.\content\pages\hero.html')
+			@include('.\content\pages\service.html')
+			@include('.\content\pages\about.html')
+			@include('.\content\pages\prices.html')
+			@include('.\content\pages\recall.html')
+			@include('.\content\pages\solutions.html')
+			@include('.\content\pages\team.html')
+			@include('.\content\pages\partners.html')
+			@include('.\content\pages\blog.html')
+		</main>
+		@include('.\content\pages\footer.html')
+	</div>
+
+	<script src="./js/main.js"></script>
+	<script src="./js/vendor.js"></script>
+</body>
+
+</html>

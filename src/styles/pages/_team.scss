@@ -1,0 +1,61 @@
+.team {
+  &__container {
+    padding: 75px 15px;
+  }
+  &__title {
+    margin-bottom: 20px;
+    max-width: 420px;
+    text-align: center;
+    margin: 0 auto;
+  }
+  &__subtitle {
+    margin-bottom: 40px;
+    max-width: 450px;
+    text-align: center;
+    margin: 0 auto;
+  }
+  &__list {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__item {
+    max-width: 400px;
+    width: 100%;
+  }
+  &__img-wrapper {
+    position: relative;
+    display: flex;
+  }
+  &__name {
+    position: absolute;
+    top: 70px;
+    left: 25px;
+    font: $fs-team-name;
+    width: min-content;
+    text-align: center;
+  }
+  &__img {
+    max-width: 400px;
+    width: 100%;
+  }
+  &__info {
+    background-color: rgba($color: $sail, $alpha: 0.4);
+    padding: 23px;
+    border-radius: 0px 0px 15px 15px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font: $fs-team-desc;
+  }
+  &__place {
+    color: $orange;
+    margin-bottom: 10px;
+  }
+  &__contact {
+    color: $tundora;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      color: $orange;
+    }
+  }
+}
