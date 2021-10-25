@@ -1,48 +1,74 @@
 .blog {
   margin-bottom: 75px;
+  @include tablet {
+    margin: 0;
+  }
   &__container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 75px 15px;
+    position: relative;
+    @include tablet {
+      flex-direction: column;
+      padding-bottom: 110px;
+    }
   }
   &__title {
     margin-bottom: 40px;
+    @include tablet {
+      margin-bottom: 10px;
+      text-align: center;
+    }
   }
   &__subtitle {
     max-width: 245px;
+    @include tablet {
+      max-width: 100%;
+      text-align: center;
+      margin-bottom: 20px;
+    }
   }
   &__info {
     margin: 0 10px;
-    max-width: 430px;
+    max-width: 400px;
+    @include tablet {
+      max-width: 600px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  }
+  &__slider {
+    max-width: 65%;
+    margin: 20px auto;
+    overflow: hidden;
+    @include tablet {
+      max-width: 90%;
+    }
+    @include small-mobile {
+      max-width: 100%;
+    }
   }
   &__list {
     display: flex;
-    justify-content: space-between;
-    max-width: 840px;
-    width: 100%;
-    align-items: center;
     position: relative;
-    overflow: hidden;
+    transition: all 0.2s ease;
   }
   &__item {
     margin: 0 10px;
-    position: absolute;
-    right: -200%;
-    opacity: 0;
-    width: 45%;
     transition: all 0.2s ease-in-out;
-    &--active {
-      position: relative;
-      opacity: 1;
-      right: 0;
+    height: 400px;
+    @include tablet {
+      max-width: 600px;
+      text-align: center;
+      margin-bottom: 20px;
+      min-height: auto;
     }
   }
   &__subtitle {
     margin-bottom: 20px;
   }
   &__btns {
-    position: relative;
     display: inline;
     bottom: -50px;
     max-width: 160px;
@@ -50,6 +76,16 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    z-index: 50;
+    @include desktop {
+      position: absolute;
+      left: 15;
+      bottom: 20px;
+    }
+    @include tablet {
+      position: static;
+      max-width: 90%;
+    }
   }
   &__btn {
     &--disable {
@@ -61,13 +97,19 @@
 
 .post {
   max-height: 470px;
-
+  text-align: start;
   &__img {
     border-radius: 15px;
     margin-bottom: 20px;
     width: 100%;
     max-height: 270px;
-    height: 100%;
+    height: auto;
+    @include tablet {
+      margin-bottom: 5px;
+    }
+    @include small-mobile {
+      margin-bottom: 5px;
+    }
   }
   &__link {
     color: $black;
@@ -81,6 +123,12 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    @include tablet {
+      margin-bottom: 10px;
+    }
+    @include small-mobile {
+      margin-bottom: 5px;
+    }
   }
   &__text {
     max-height: 36px;

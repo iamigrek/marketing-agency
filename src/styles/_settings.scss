@@ -76,6 +76,9 @@ a {
   margin: 0;
   &--main {
     font: $fs-main-title;
+    @include small-tablet {
+      font: $fs-global-subtitle;
+    }
   }
   &--global {
     font: $fs-global-title;
@@ -86,15 +89,27 @@ a {
   }
   &--global-subtitle {
     font: $fs-global-subtitle;
+    @include tablet {
+      font: $fs-global-subtitle-adaptive;
+    }
   }
   &--beautiful {
     font: $fs-beautiful-title;
+    @include small-tablet {
+      font: $fs-post-title;
+    }
   }
   &--footer {
     font: $fs-footer-title;
   }
   &--post {
     font: $fs-post-title;
+    @include tablet {
+      font: $fs-post-title-adaptive;
+    }
+    @include mobile {
+      font: $fs-post-text;
+    }
   }
 }
 
@@ -138,6 +153,9 @@ a {
       background-color: $transparent;
       color: $orange;
     }
+    @include mobile {
+      padding: 10px 0;
+    }
   }
   &--light {
     background-color: rgba($color: $illusion, $alpha: 0.2);
@@ -150,6 +168,9 @@ a {
   &--recall-slider {
     font: $fs-grey-desc;
     transition: all 0.2s ease-in-out;
+    @include tablet {
+      font: $fs-team-desc;
+    }
     &:hover {
       color: $orange;
     }
@@ -163,6 +184,10 @@ a {
     border-radius: 50%;
     position: relative;
     transition: all 0.2s ease-in-out;
+    @include tablet {
+      max-width: 50px;
+      height: 50px;
+    }
     &::before {
       content: '';
       width: 6px;
@@ -178,10 +203,12 @@ a {
     }
   }
   &--slider-prev {
-    &:hover {
-      background-color: $watusi;
-      &::before {
-        left: 42%;
+    @include desktop {
+      &:hover {
+        background-color: $watusi;
+        &::before {
+          left: 42%;
+        }
       }
     }
     &::before {
@@ -189,14 +216,81 @@ a {
     }
   }
   &--slider-next {
-    &:hover {
-      background-color: $watusi;
-      &::before {
-        left: 58%;
+    @include desktop {
+      &:hover {
+        background-color: $watusi;
+        &::before {
+          left: 58%;
+        }
       }
     }
     &::before {
       background-image: url(../images/sprite.svg#arrow-right);
+    }
+  }
+  &--burger {
+    display: none;
+    width: 50px;
+    height: 50px;
+    position: relative;
+    border: 2px solid #fed4cd;
+    border-radius: 50%;
+    z-index: 101;
+    transition: all 0.2s ease-in-out;
+    &-active {
+      border: 2px solid #fffeff;
+      .btn--burger__item {
+        background-color: transparent;
+        &::before,
+        &::after {
+          background-color: #fffeff;
+          width: 100%;
+          left: 0;
+          position: absolute;
+        }
+        &::after {
+          transform: rotate(45deg);
+          bottom: 0;
+        }
+        &::before {
+          transform: rotate(-45deg);
+          top: 0;
+        }
+      }
+    }
+    &__item {
+      display: block;
+      width: 50%;
+      height: 2px;
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, 0);
+      background-color: #ff6744;
+      transition: all 0.2s ease-in-out;
+      &::before,
+      &::after {
+        content: '';
+        width: 50%;
+        height: 2px;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, 0);
+        background-color: #ff6744;
+        transition: all 0.2s ease-in-out;
+      }
+      &::before {
+        top: -10px;
+      }
+      &::after {
+        bottom: -10px;
+      }
+    }
+    @include small-tablet {
+      display: block;
+    }
+    @include mobile {
+      width: 40px;
+      height: 40px;
     }
   }
 }

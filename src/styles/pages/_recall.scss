@@ -5,6 +5,9 @@
     justify-content: space-between;
     align-items: center;
     padding: 75px 15px;
+    @include tablet {
+      justify-content: center;
+    }
   }
   &__list {
     max-width: 500px;
@@ -26,9 +29,14 @@
       left: 0;
     }
   }
+  &__btns {
+    @include tablet {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
   &__btn {
     animation: recallBtn 1s ease-in-out infinite;
-
     &--disable {
       color: $boulder;
       cursor: default;
@@ -37,26 +45,58 @@
         color: $boulder;
       }
     }
+    &--devider {
+      @include tablet {
+        display: none;
+      }
+    }
   }
 
   &__title {
     margin-bottom: 20px;
+    @include tablet {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+      margin-bottom: 10px;
+    }
   }
   &__subtitle {
     margin-bottom: 20px;
+    @include tablet {
+      max-width: 650px;
+      margin: 0 auto;
+      text-align: center;
+      margin-bottom: 10px;
+    }
   }
   &__desc {
     margin-bottom: 25px;
+    @include tablet {
+      max-width: 650px;
+      margin: 0 auto;
+      text-align: center;
+      margin-bottom: 20px;
+    }
   }
   &__quote {
     margin-bottom: 20px;
     margin: 0;
+    @include tablet {
+      max-width: 500px;
+      margin: 0 auto;
+    }
     &-text {
       margin-bottom: 35px;
+      max-width: 500px;
       display: inline-block;
       position: relative;
       text-indent: 30px;
       color: $cornflower;
+      @include tablet {
+        max-width: 1000px;
+        margin-bottom: 20px;
+      }
       &::before {
         content: '';
         width: 23px;
@@ -86,10 +126,17 @@
     width: 100%;
     position: relative;
     max-height: 550px;
+    @include tablet {
+      position: absolute;
+      max-width: 1000px;
+    }
   }
   &__img-wrapper {
     position: relative;
     width: fit-content;
+    @include small-tablet {
+      display: none;
+    }
     &::after {
       content: '';
       width: 100%;
@@ -109,6 +156,12 @@
     &:nth-child(1) {
       top: 0;
       left: 0;
+      max-width: 270px;
+      @include tablet {
+        top: -183px;
+        left: 70px;
+        max-width: 100px;
+      }
       &::before {
         width: 15px;
         height: 15px;
@@ -119,19 +172,37 @@
     }
     &:nth-child(2) {
       top: 50%;
-      left: 310px;
       transform: translate(0, -50%);
+      @include desktop {
+        left: 310px;
+      }
+      @include tablet {
+        position: absolute;
+        top: 35px;
+        right: 10px;
+        max-width: 120px;
+        transform: translate(0, 0);
+      }
       &::before {
         width: 50px;
         height: 50px;
         bottom: -110px;
         left: 60px;
         background-color: $cello;
+        @include tablet {
+          left: -51px;
+          width: 30px;
+          height: 30px;
+          bottom: -20px;
+        }
       }
     }
     &:nth-child(3) {
       top: -200px;
       left: 90px;
+      @include tablet {
+        display: none;
+      }
       &::before {
         width: 30px;
         height: 30px;

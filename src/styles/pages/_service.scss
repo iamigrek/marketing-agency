@@ -5,15 +5,41 @@
   &__list {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    @include small-tablet {
+      justify-content: center;
+
+      flex-wrap: wrap;
+    }
+    @include mobile {
+      flex-wrap: nowrap;
+      flex-direction: column;
+    }
   }
   &__item {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 0 10px;
+    @include small-tablet {
+      margin-bottom: 50px;
+    }
+    @include mobile {
+      flex-direction: row;
+    }
+    @include small-mobile {
+      flex-direction: column;
+    }
   }
   &__img {
     margin-bottom: 25px;
     height: 80px;
+    @include mobile {
+      margin-bottom: 0;
+    }
+    @include small-mobile {
+      margin-bottom: 25px;
+    }
   }
 
   &__img-wrapper {

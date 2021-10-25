@@ -1,48 +1,61 @@
-const blogBtn1 = document.querySelector('.blog__btn--prev');
-const blogBtn2 = document.querySelector('.blog__btn--next');
+const item = document.querySelectorAll('.blog__item');
+const sliderLine = document.querySelector('.blog__list');
+let count = 0;
+let width;
 
-const blogSlideritem = document.querySelectorAll('.blog__item');
+function init() {
+  width = document.querySelector('.blog__slider').offsetWidth;
+  sliderLine.style.width = width * item.length + 'px';
 
-let j = 1;
-
-document.addEventListener('DOMContentLoaded', () => {
-  const blogItemId = document.getElementById(`blog-slide-${j}`);
-  const blogItemId2 = document.getElementById(`blog-slide-${j + 1}`);
-  blogItemId.classList.add('blog__item--active');
-  blogItemId2.classList.add('blog__item--active');
-  blogBtn1.classList.add('blog__btn--disable');
-});
-
-blogBtn2.addEventListener('click', () => {
-  if (j < blogSlideritem.length) {
-    j++;
-    BlogItemGen();
-    blogBtn1.classList.remove('blog__btn--disable');
+  if (width < 400) {
+    item.forEach(item => {
+      item.style.width = width - 20 + 'px';
+      item.style.height = 'auto';
+    });
+  } else {
+    item.forEach(item => {
+      item.style.width = width / 2 - 20 + 'px';
+      item.style.height = 'auto';
+    });
   }
-});
+  rollSlider();
+}
 
-blogBtn1.addEventListener('click', () => {
-  if (j > 1) {
-    j--;
-    BlogItemGen();
-    blogBtn2.classList.remove('blog__btn--disable');
-  }
-});
+init();
+window.addEventListener('resize', init);
 
-function BlogItemGen() {
-  const blogItemId = document.getElementById(`blog-slide-${j}`);
-  console.log(blogItemId);
-  const blogItemId2 = document.getElementById(`blog-slide-${j + 1}`);
-  blogSlideritem.forEach(item => {
-    item.classList.remove('blog__item--active');
+document
+  .querySelector('.blog__btn--next')
+  .addEventListener('click', function () {
+    count++;
+    if (width < 400) {
+      if (count >= item.length) {
+        count = 0;
+      }
+    } else {
+      if (count >= item.length / 2) {
+        count = 0;
+      }
+    }
+    rollSlider();
   });
 
-  blogItemId.classList.add('blog__item--active');
-  blogItemId2.classList.add('blog__item--active');
+document
+  .querySelector('.blog__btn--prev')
+  .addEventListener('click', function () {
+    count--;
+    if (width < 400) {
+      if (count < 0) {
+        count = Math.round(item.length - 1);
+      }
+    } else {
+      if (count < 0) {
+        count = Math.round(item.length / 2 - 1);
+      }
+    }
+    rollSlider();
+  });
 
-  if (j >= blogSlideritem.length) {
-    blogBtn2.classList.add('blog__btn--disable');
-  } else if (j <= 1) {
-    blogBtn1.classList.add('blog__btn--disable');
-  }
+function rollSlider() {
+  sliderLine.style.transform = 'translate(-' + count * width + 'px)';
 }

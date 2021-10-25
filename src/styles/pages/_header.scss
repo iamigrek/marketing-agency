@@ -1,17 +1,44 @@
 @import './vars';
+@import '../mixins/adaptive';
 
 .header {
   padding-top: 20px;
-  position: absolute;
   width: 100%;
+  position: absolute;
+  top: 0;
   z-index: 5;
+  transition: all 0.2s ease-in-out;
+  background-color: $transparent;
+  @include small-tablet {
+    padding-top: 10px;
+  }
+  &--active {
+    padding: 10px 0;
+    box-shadow: 1px 1px 5px rgba($color: $boulder, $alpha: 0.5);
+    background-color: $white;
+    position: fixed;
+    transition: all 0.2s ease-in-out;
+    animation: 0.4s header;
+  }
   &__container {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
+  &__logo-link {
+    @include mobile {
+      display: contents;
+      max-width: 200px;
+    }
+  }
   &__logo {
-    max-height: 85px;
+    max-height: 50px;
+    @include tablet {
+      width: 70%;
+    }
+    @include mobile {
+      width: 100px;
+    }
   }
   &__right {
     display: flex;
@@ -19,16 +46,89 @@
   }
   &__btn {
     margin-left: 50px;
+    @include tablet {
+      margin-left: 30px;
+      padding: 13px 30px;
+    }
+    @include small-tablet {
+      order: -1;
+      margin-right: 30px;
+    }
+    @include mobile {
+      margin-left: 0;
+      margin-right: 20px;
+      padding: 7px 15px;
+    }
   }
 }
 
 .nav {
+  &__list-wrapper {
+    @include small-tablet {
+      &--open {
+        position: fixed;
+        background-color: black;
+        transition: all 0.2s ease-in-out;
+        opacity: 0.5;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+      }
+    }
+  }
   &__list {
     display: flex;
+    transition: all 0.3s ease-in-out;
+
+    @include small-tablet {
+      max-width: 1000px;
+      width: 100%;
+      visibility: hidden;
+      position: absolute;
+      opacity: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: #ff6744;
+      padding: 28px 20px;
+      align-items: center;
+      z-index: 100;
+      box-shadow: 1px 1px 10px #7a7a7a;
+      transform: translateX(-500%);
+    }
+    @include mobile {
+      position: fixed;
+      bottom: 0;
+      padding: 0 20px;
+      flex-direction: column;
+      justify-content: center;
+      transform: translateY(-500%);
+    }
+    &--open {
+      @include small-tablet {
+        transform: translateX(0);
+        visibility: visible;
+        opacity: 1;
+      }
+      @include mobile {
+        transform: translateY(0);
+      }
+    }
   }
   &__item {
     &:not(:last-child) {
       margin-right: 110px;
+      @include tablet {
+        margin-right: 30px;
+      }
+      @include small-tablet {
+        margin-right: 20px;
+      }
+      @include mobile {
+        margin-right: 0;
+        margin-bottom: 50px;
+      }
     }
   }
   &__link {
@@ -37,5 +137,22 @@
     &:hover {
       color: $orange;
     }
+    @include small-tablet {
+      font: $fs-service-title;
+      color: $white;
+    }
+    @include mobile {
+    }
+  }
+}
+
+@keyframes header {
+  from {
+    opacity: 0;
+    transform: translateY(-500px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
